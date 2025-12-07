@@ -121,212 +121,130 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
       <main className="mx-auto w-full max-w-5xl">
-        {/* Header Section */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          {/* Name and Title Banner */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-              {profile.name}
-            </h1>
-            <p className="text-blue-100 text-lg font-medium">
-              {profile.title}
-            </p>
-            <p className="text-blue-100 text-sm mt-1">
-              📍 {profile.location}
-            </p>
+        {/* Top Header (Twitter-like) */}
+        <div className="flex items-center gap-6 mb-6">
+          <div className="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center text-white text-2xl font-bold">
+            {profile.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
           </div>
-
-          {/* Contact Info */}
-          <div className="bg-slate-50 px-8 py-4 flex flex-wrap gap-6 text-sm">
-            <a
-              href={`mailto:${profile.email}`}
-              className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition"
-            >
-              <span>✉️</span>
-              {profile.email}
-            </a>
-            <a
-              href={`tel:${profile.phone}`}
-              className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition"
-            >
-              <span>📱</span>
-              {profile.phone}
-            </a>
-            <a
-              href={`https://${profile.website}`}
-              className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition"
-            >
-              <span>🌐</span>
-              {profile.website}
-            </a>
-            <a
-              href={`https://${profile.linkedin}`}
-              className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition"
-            >
-              <span>💼</span>
-              LinkedIn
-            </a>
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl font-bold text-slate-900">{profile.name}</h1>
+              <span className="text-sm text-slate-500">•</span>
+              <span className="text-sm text-slate-500">@{profile.name.toLowerCase().replace(/\s+/g, "")}</span>
+            </div>
+            <p className="text-sm text-slate-600">{profile.title} — {profile.location}</p>
+          </div>
+          <div className="ml-auto flex gap-3">
+            <a href={`https://${profile.linkedin}`} className="text-sky-600 text-sm font-medium hover:underline">Follow</a>
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-          {/* Left Sidebar */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Summary */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="w-1 h-8 bg-blue-600 rounded"></span>
-                Professional Summary
-              </h2>
-              <p className="text-slate-700 leading-relaxed text-justify">
-                {profile.summary}
-              </p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Feed (left, main) */}
+          <div className="lg:col-span-2 space-y-4">
+            {/* Summary card (tweet-style) */}
+            <div className="bg-white rounded-lg shadow p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">{profile.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <div className="font-semibold text-slate-900">{profile.name}</div>
+                    <div className="text-sm text-slate-500">@{profile.name.toLowerCase().replace(/\s+/g, "")}</div>
+                    <div className="text-sm text-slate-400">·</div>
+                    <div className="text-sm text-slate-400">Summary</div>
+                  </div>
+                  <p className="mt-2 text-slate-700 text-sm">{profile.summary}</p>
+                </div>
+              </div>
             </div>
 
-            {/* Experience */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <span className="w-1 h-8 bg-blue-600 rounded"></span>
-                Professional Experience
-              </h2>
-              <div className="space-y-8">
-                {profile.experience.map((exp, idx) => (
-                  <div key={exp.company} className={idx !== profile.experience.length - 1 ? "pb-8 border-b border-slate-200" : ""}>
-                    <div className="flex items-start justify-between mb-2">
+            {/* Experience feed cards */}
+            {profile.experience.map((exp) => (
+              <div key={exp.company} className="bg-white rounded-lg shadow p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700">🏢</div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-lg font-semibold text-slate-900">
-                          {exp.role}
-                        </h3>
-                        <p className="text-blue-600 font-medium">{exp.company}</p>
+                        <div className="font-semibold text-slate-900">{exp.role} @ {exp.company}</div>
+                        <div className="text-xs text-slate-500">{exp.date}</div>
                       </div>
-                      <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap ml-4">
-                        {exp.date}
-                      </span>
                     </div>
-                    <ul className="mt-4 space-y-2">
-                      {exp.bullets.map((bullet, i) => (
-                        <li key={i} className="flex gap-3 text-slate-700">
-                          <span className="text-blue-600 font-bold mt-1">▸</span>
-                          <span>{bullet}</span>
-                        </li>
+                    <ul className="mt-3 text-slate-700 list-disc ml-5 space-y-1 text-sm">
+                      {exp.bullets.map((b, i) => (
+                        <li key={i}>{b}</li>
                       ))}
                     </ul>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
+            ))}
 
-            {/* Projects */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <span className="w-1 h-8 bg-blue-600 rounded"></span>
-                Notable Projects
-              </h2>
-              <div className="space-y-6">
-                {profile.projects.map((project, idx) => (
-                  <div key={project.name} className={idx !== profile.projects.length - 1 ? "pb-6 border-b border-slate-200" : ""}>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                      {project.name}
-                    </h3>
-                    <div className="space-y-2 mb-4">
-                      {project.descriptions.map((desc, i) => (
-                        <p key={i} className="text-slate-700 flex gap-3">
-                          <span className="text-blue-600 font-bold">•</span>
-                          {desc}
-                        </p>
+            {/* Projects feed cards */}
+            {profile.projects.map((proj) => (
+              <div key={proj.name} className="bg-white rounded-lg shadow p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700">💡</div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <div className="font-semibold text-slate-900">{proj.name}</div>
+                      <div className="text-xs text-slate-400">Project</div>
+                    </div>
+                    <div className="mt-2 space-y-1 text-slate-700 text-sm">
+                      {proj.descriptions.map((d, i) => (
+                        <p key={i}>{d}</p>
                       ))}
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="inline-block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200"
-                        >
-                          {tech}
-                        </span>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {proj.techStack.map((t) => (
+                        <span key={t} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full">{t}</span>
                       ))}
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
 
-          {/* Right Sidebar */}
-          <div className="space-y-6">
-            {/* Skills */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="text-2xl">💡</span>
-                Skills
-              </h3>
+          {/* Right Sidebar (profile details) */}
+          <aside className="space-y-4">
+            <div className="bg-white rounded-lg shadow p-4">
+              <h3 className="font-semibold text-slate-900 mb-2">Skills</h3>
               <div className="flex flex-wrap gap-2">
-                {profile.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="bg-slate-100 text-slate-800 text-xs font-semibold px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-700 transition"
-                  >
-                    {skill}
-                  </span>
+                {profile.skills.map((s) => (
+                  <span key={s} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded">{s}</span>
                 ))}
               </div>
             </div>
 
-            {/* Education */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="text-2xl">🎓</span>
-                Education
-              </h3>
-              <div className="space-y-4">
-                {profile.education.map((edu) => (
-                  <div key={edu.school}>
-                    <div className="font-semibold text-slate-900 text-sm">
-                      {edu.degree}
-                    </div>
-                    <div className="text-blue-600 text-sm font-medium">
-                      {edu.school}
-                    </div>
-                    <div className="text-slate-600 text-xs mt-1">
-                      {edu.date}
-                    </div>
+            <div className="bg-white rounded-lg shadow p-4">
+              <h3 className="font-semibold text-slate-900 mb-2">Education</h3>
+              {profile.education.map((e) => (
+                <div key={e.school} className="text-sm text-slate-700">
+                  <div className="font-medium">{e.degree}</div>
+                  <div className="text-slate-500">{e.school}</div>
+                  <div className="text-xs text-slate-400">{e.date}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-white rounded-lg shadow p-4">
+              <h3 className="font-semibold text-slate-900 mb-2">Certifications</h3>
+              <div className="space-y-2 text-sm text-slate-700">
+                {profile.certifications.map((c) => (
+                  <div key={c.name} className="">
+                    <div className="font-medium">{c.name}</div>
+                    <div className="text-slate-500 text-xs">{c.issuer} · {c.date}</div>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Certifications */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="text-2xl">🏆</span>
-                Certifications
-              </h3>
-              <div className="space-y-4">
-                {profile.certifications.map((cert) => (
-                  <div key={cert.name} className="border-l-2 border-blue-600 pl-3">
-                    <div className="font-semibold text-slate-900 text-sm">
-                      {cert.name}
-                    </div>
-                    <div className="text-slate-600 text-xs">
-                      {cert.issuer}
-                    </div>
-                    <div className="text-blue-600 text-xs font-medium mt-1">
-                      {cert.date}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          </aside>
         </div>
 
-        {/* Footer */}
-        <div className="mt-8 text-center text-slate-400 text-sm">
-          <p>Last updated — Dec 2025</p>
-        </div>
+        <div className="mt-6 text-center text-slate-400 text-xs">Last updated — Dec 2025</div>
       </main>
     </div>
   );
