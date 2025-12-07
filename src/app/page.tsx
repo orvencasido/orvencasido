@@ -2,55 +2,120 @@ import Image from "next/image";
 
 export default function Home() {
   const profile = {
-    name: "Orven Example",
-    title: "Senior Software Engineer",
-    location: "Remote — San Francisco, CA",
-    email: "orven@example.com",
-    phone: "+1 (555) 123-4567",
-    website: "orven.dev",
-    linkedin: "linkedin.com/in/orven",
-    github: "github.com/orven",
+    name: "Orven Casido",
+    title: "DevOps Engineer",
+    location: "Filinvest City, Philippines",
+    email: "orvencasidop@gmail.com",
+    phone: "+63 927 339 1882",
+    website: "orvencasido.com",
+    linkedin: "linkedin.com/in/orven-casido-39bb58319",
+    github: "github.com/orvencasido",
     summary:
-      "Product-minded engineer with 8+ years building scalable web applications and developer tools. Skilled at leading small teams, shipping high-impact features, and improving reliability and performance.",
+      "Results-driven DevOps Apprentice experienced in automating infrastructure, optimizing CI/CD pipelines, and managing Kubernetesbased cloud environments. Improved deployment speed by 70%, reduced manual operations by 50%, and delivered scalable AWS and Azure architectures using Docker, Terraform, Jenkins, and Ansible. Focused on building reliable, production-ready systems through efficient automation and cloud-native engineering.",
     skills: [
-      "TypeScript",
-      "React / Next.js",
-      "Node.js",
-      "GraphQL / REST",
-      "Testing (Jest, RTL)",
-      "CI/CD / Docker",
+      "Kubernetes",
+      "Docker",
+      "Jenkins",
+      "AWS",
+      "Azure",
+      "Helm",
+      "Git",
+      "Github Actions",
+      "CICD",
+      "Terraform",
+      "Ansible",
+      "Prometheus",
+      "Grafana",
+      "Kibana",
+      "JavaScript",
+      "Python",
+      "Linux",
+      "YAML",
+      "Bash",
+      "Networking",
     ],
     experience: [
       {
-        company: "Acme Labs",
-        role: "Staff Software Engineer",
-        date: "2021 — Present",
+        company: "Nityo Infosys",
+        role: "DevOps Engineer",
+        date: "December 2025 — Present",
         bullets: [
-          "Led redesign of core product, increasing engagement by 28% and reducing load times by 40%.",
-          "Mentored 6 engineers and established a reliable release process with feature flags and canaries.",
+          "Creating and Maintaning Pipelines that Supports Global Websites for Essilor Luxottica.",
         ],
       },
       {
-        company: "Nimbus Co.",
-        role: "Senior Software Engineer",
-        date: "2018 — 2021",
+        company: "Essilor Luxottica",
+        role: "DevOps Apprentice",
+        date: "June 2025 — December 2025",
         bullets: [
-          "Built a microfrontend architecture to speed feature development across teams.",
-          "Implemented end-to-end testing and observability tooling that reduced MTTR by 50%.",
+          "Exposed to production-grade pipelines and executed CI/CD jobs supporting global eCommerce websites, reducing deployment time by 50% through pipeline automation and optimization.",
+          "Collaborated with a team of 10+ DevOps engineers to maintain enterprise-level DevOps infrastructure, contributing toimprovements in monitoring, logging, and system reliability.",
+          "Enhanced non-transactional websites by setting up infrastructure and full application configuration using Kubernetes and Dockerin lower environments, contributing to 20% fewer vulnerabilities reaching production.",
+        ],
+      },
+      {
+        company: "Carabao Cloud Solutions Inc.",
+        role: "Internal IT Administrator",
+        date: "June 2024 - September 2024",
+        bullets: [
+          "Supported 50+ client profiles, providing remote access solutions and ensuring high availability of systems.",
+          "Implemented proactive system monitoring, reducing downtime by 15% and improving overall system performance.",
         ],
       },
     ],
     education: [
       {
-        school: "State University",
-        degree: "B.S. Computer Science",
-        date: "2014 — 2018",
+        school: "Southern Luzon State University",
+        degree: "Bachelor of Science in Computer Engineering",
+        date: "September 2021 — July 2025",
+      },
+    ],
+    certifications: [
+      {
+        name: "AWS Certified Cloud Practitioner",
+        issuer: "Udemy",
+        date: "2025",
+      },
+      {
+        name: "Microsoft Certified: Azure Fundamentals",
+        issuer: "Udemy",
+        date: "2025",
+      },
+      {
+        name: " ICT Programming Efficiency Exam",
+        issuer: "DICT",
+        date: "2025",
       },
     ],
     projects: [
       {
-        name: "Insight — analytics platform",
-        desc: "Real-time dashboards and anomaly detection used by >1k customers.",
+        name: "AWS Cloud Resume Challenge",
+        descriptions: [
+          "Developed a personal portfolio website with 100% automation in CI/CD, significantly reducing deployment time by 70%.",
+        ],
+        techStack: ["AWS S3", "CloudFront", "Github", "Terraform", "AWS Lambda", "AWS DynamoDB"],
+      },
+      {
+        name: "Full-Scale Kubernetes Deployment Project",
+        descriptions: [
+          "Implemented CI/CD pipelines with Jenkins, automating testing and deployment, increasing deployment frequency by 80%.",
+          "Integrated Ansible for configuration management, ensuring consistency across multiple environments and improving overallsystem reliability.",
+        ],
+        techStack: ["Kubernetes","Jenkins", "Helm", "Docker", "Terraform", "Prometheus", "Docker","Git"],
+      },
+      {
+        name: "Headless Website with Strapi and Next.js",
+        descriptions: [
+          "Developed a headless CMS website using Strapi and Next.js, enhancing content management efficiency and user experience.",
+        ],
+        techStack: ["Strapi","NextJS", "Docker", "Kubernetes", "Vercel", "Github"],
+      },
+      {
+        name: "Virtual Reality Social Skill Simulator Thesis Project",
+        descriptions: [
+          "Developed an AI-driven VR simulator that enhances communication skills for individuals with challenges in real-world interaction.",
+        ],
+        techStack: ["Llama LLM","Speechify Text To Speech API", "Grock Text to Speech API", "Unity3d"],
       },
     ],
   };
@@ -123,9 +188,18 @@ export default function Home() {
             </h3>
             <ul className="text-sm text-zinc-600 dark:text-zinc-400">
               {profile.projects.map((p) => (
-                <li key={p.name} className="mb-2">
+                <li key={p.name} className="mb-4">
                   <div className="font-medium text-zinc-800 dark:text-zinc-100">{p.name}</div>
-                  <div className="text-xs">{p.desc}</div>
+                  {p.descriptions.map((desc, i) => (
+                    <div key={i} className="text-xs mb-1">{desc}</div>
+                  ))}
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {p.techStack.map((tech) => (
+                      <span key={tech} className="inline-block bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-xs px-1 py-0.5 rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </li>
               ))}
             </ul>
@@ -177,10 +251,26 @@ export default function Home() {
               </div>
             </section>
 
+            <section className="mt-8">
+              <h2 className="text-lg font-semibold text-black dark:text-zinc-50">
+                Certifications
+              </h2>
+              <div className="mt-4 space-y-3">
+                {profile.certifications.map((cert) => (
+                  <div key={cert.name} className="flex items-start justify-between">
+                    <div>
+                      <div className="font-medium text-zinc-900 dark:text-zinc-100">{cert.name}</div>
+                      <div className="text-sm text-zinc-600 dark:text-zinc-400">{cert.issuer}</div>
+                    </div>
+                    <div className="text-sm text-zinc-500 dark:text-zinc-400">{cert.date}</div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             <footer className="mt-10 border-t pt-6 text-sm text-zinc-600 dark:text-zinc-400">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <div>References available upon request.</div>
-                <div className="hidden text-xs sm:block">Last updated — Dec 2025</div>
+              <div className="flex justify-end">
+                <div className="text-xs">Last updated — Dec 2025</div>
               </div>
             </footer>
           </div>
