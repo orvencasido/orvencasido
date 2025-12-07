@@ -184,6 +184,13 @@ export default function Home() {
               </div>
             ))}
 
+            {/* Separator between Experience and Projects */}
+            <div className="my-4 flex items-center">
+              <hr className="flex-1 border-slate-200" />
+              <span className="mx-4 text-xs text-slate-400">Projects</span>
+              <hr className="flex-1 border-slate-200" />
+            </div>
+
             {/* Projects feed cards */}
             {profile.projects.map((proj) => (
               <div key={proj.name} className="bg-white rounded-lg shadow p-4">
