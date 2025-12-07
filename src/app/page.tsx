@@ -125,8 +125,8 @@ export default function Home() {
       <main className="mx-auto w-full max-w-5xl">
         {/* Top Header (Twitter-like) */}
         <div className="flex items-center gap-6 mb-6">
-          <div className="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center text-white text-2xl font-bold">
-            {profile.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+          <div className="w-20 h-20 rounded-full overflow-hidden">
+            <Image src="/avatar.svg" alt={`${profile.name} avatar`} width={80} height={80} className="rounded-full" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -147,7 +147,9 @@ export default function Home() {
             {/* Summary card (tweet-style) */}
             <div className="bg-white rounded-lg shadow p-4">
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">{profile.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</div>
+                  <div className="w-10 h-10 rounded-full overflow-hidden">
+                    <Image src="/avatar.svg" alt={`${profile.name} avatar`} width={40} height={40} className="rounded-full" />
+                  </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <div className="font-semibold text-slate-900">{profile.name}</div>
@@ -199,7 +201,9 @@ export default function Home() {
                     </div>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {proj.techStack.map((t) => (
-                        <span key={t} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full">{t}</span>
+                        <a key={t} href={`https://github.com/search?q=${encodeURIComponent(t)}`} target="_blank" rel="noopener noreferrer" className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full hover:bg-slate-200">
+                          {t}
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -214,7 +218,7 @@ export default function Home() {
               <h3 className="font-semibold text-slate-900 mb-2">Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {profile.skills.map((s) => (
-                  <span key={s} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded">{s}</span>
+                  <a key={s} href={`https://github.com/search?q=${encodeURIComponent(s)}`} target="_blank" rel="noopener noreferrer" className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded hover:bg-slate-200">{s}</a>
                 ))}
               </div>
             </div>
