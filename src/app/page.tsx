@@ -121,160 +121,212 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 py-12 px-6 dark:bg-black">
-      <main className="mx-auto w-full max-w-4xl rounded-xl bg-white p-8 shadow-md dark:bg-zinc-900">
-        <header className="flex flex-col-reverse items-start gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold text-black dark:text-zinc-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-8 px-4 sm:px-6 lg:px-8">
+      <main className="mx-auto w-full max-w-5xl">
+        {/* Header Section */}
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          {/* Name and Title Banner */}
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
               {profile.name}
             </h1>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
-              {profile.title} • {profile.location}
+            <p className="text-blue-100 text-lg font-medium">
+              {profile.title}
+            </p>
+            <p className="text-blue-100 text-sm mt-1">
+              📍 {profile.location}
             </p>
           </div>
-          <div className="flex w-full flex-col items-start gap-2 sm:w-auto sm:items-end md:flex-row md:gap-6">
-            <div className="flex items-center gap-4">
-              <a
-                href={`mailto:${profile.email}`}
-                className="text-sm text-zinc-700 hover:underline dark:text-zinc-200"
-              >
-                {profile.email}
-              </a>
-              <span className="hidden text-zinc-400 md:inline">•</span>
-              <a
-                href={`tel:${profile.phone}`}
-                className="hidden text-sm text-zinc-700 hover:underline dark:text-zinc-200 md:inline"
-              >
-                {profile.phone}
-              </a>
-            </div>
-            <div className="mt-1 flex gap-3 text-sm text-zinc-600 dark:text-zinc-400 md:mt-0">
-              <a href={`https://${profile.website}`} className="hover:underline">
-                {profile.website}
-              </a>
-              <span className="hidden md:inline">•</span>
-              <a href={`https://${profile.linkedin}`} className="hover:underline">
-                {profile.linkedin.replace("https://", "")}
-              </a>
-            </div>
+
+          {/* Contact Info */}
+          <div className="bg-slate-50 px-8 py-4 flex flex-wrap gap-6 text-sm">
+            <a
+              href={`mailto:${profile.email}`}
+              className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition"
+            >
+              <span>✉️</span>
+              {profile.email}
+            </a>
+            <a
+              href={`tel:${profile.phone}`}
+              className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition"
+            >
+              <span>📱</span>
+              {profile.phone}
+            </a>
+            <a
+              href={`https://${profile.website}`}
+              className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition"
+            >
+              <span>🌐</span>
+              {profile.website}
+            </a>
+            <a
+              href={`https://${profile.linkedin}`}
+              className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition"
+            >
+              <span>💼</span>
+              LinkedIn
+            </a>
           </div>
-        </header>
+        </div>
 
-        <section className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-4">
-          <aside className="order-2 md:order-1 md:col-span-1">
-            <h3 className="mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-              Summary
-            </h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              {profile.summary}
-            </p>
-
-            <h3 className="mt-6 mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-              Skills
-            </h3>
-            <ul className="flex flex-wrap gap-2">
-              {profile.skills.map((s) => (
-                <li
-                  key={s}
-                  className="rounded-md bg-zinc-100 px-2 py-1 text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
-                >
-                  {s}
-                </li>
-              ))}
-            </ul>
-
-            <h3 className="mt-6 mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-              Projects
-            </h3>
-            <ul className="text-sm text-zinc-600 dark:text-zinc-400">
-              {profile.projects.map((p) => (
-                <li key={p.name} className="mb-4">
-                  <div className="font-medium text-zinc-800 dark:text-zinc-100">{p.name}</div>
-                  {p.descriptions.map((desc, i) => (
-                    <div key={i} className="text-xs mb-1">{desc}</div>
-                  ))}
-                  <div className="flex flex-wrap gap-1 mt-2">
-                    {p.techStack.map((tech) => (
-                      <span key={tech} className="inline-block bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-xs px-1 py-0.5 rounded">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </aside>
-
-          <div className="order-1 md:order-2 md:col-span-3">
-            <section>
-              <h2 className="text-lg font-semibold text-black dark:text-zinc-50">
-                Experience
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+          {/* Left Sidebar */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Summary */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span className="w-1 h-8 bg-blue-600 rounded"></span>
+                Professional Summary
               </h2>
-              <div className="mt-4 space-y-6">
-                {profile.experience.map((exp) => (
-                  <article key={exp.company} className="">
-                    <div className="flex items-start justify-between">
+              <p className="text-slate-700 leading-relaxed text-justify">
+                {profile.summary}
+              </p>
+            </div>
+
+            {/* Experience */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <span className="w-1 h-8 bg-blue-600 rounded"></span>
+                Professional Experience
+              </h2>
+              <div className="space-y-8">
+                {profile.experience.map((exp, idx) => (
+                  <div key={exp.company} className={idx !== profile.experience.length - 1 ? "pb-8 border-b border-slate-200" : ""}>
+                    <div className="flex items-start justify-between mb-2">
                       <div>
-                        <h3 className="text-base font-medium text-zinc-900 dark:text-zinc-100">
+                        <h3 className="text-lg font-semibold text-slate-900">
                           {exp.role}
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400">{exp.company}</p>
+                        <p className="text-blue-600 font-medium">{exp.company}</p>
                       </div>
-                      <div className="text-sm text-zinc-500 dark:text-zinc-400">{exp.date}</div>
+                      <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap ml-4">
+                        {exp.date}
+                      </span>
                     </div>
-                    <ul className="mt-3 ml-4 list-disc text-sm text-zinc-600 dark:text-zinc-400">
-                      {exp.bullets.map((b, i) => (
-                        <li key={i} className="mb-1">
-                          {b}
+                    <ul className="mt-4 space-y-2">
+                      {exp.bullets.map((bullet, i) => (
+                        <li key={i} className="flex gap-3 text-slate-700">
+                          <span className="text-blue-600 font-bold mt-1">▸</span>
+                          <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <section className="mt-8">
-              <h2 className="text-lg font-semibold text-black dark:text-zinc-50">
-                Education
-              </h2>
-              <div className="mt-4 space-y-3">
-                {profile.education.map((e) => (
-                  <div key={e.school} className="flex items-start justify-between">
-                    <div>
-                      <div className="font-medium text-zinc-900 dark:text-zinc-100">{e.school}</div>
-                      <div className="text-sm text-zinc-600 dark:text-zinc-400">{e.degree}</div>
-                    </div>
-                    <div className="text-sm text-zinc-500 dark:text-zinc-400">{e.date}</div>
                   </div>
                 ))}
               </div>
-            </section>
+            </div>
 
-            <section className="mt-8">
-              <h2 className="text-lg font-semibold text-black dark:text-zinc-50">
-                Certifications
+            {/* Projects */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <span className="w-1 h-8 bg-blue-600 rounded"></span>
+                Notable Projects
               </h2>
-              <div className="mt-4 space-y-3">
-                {profile.certifications.map((cert) => (
-                  <div key={cert.name} className="flex items-start justify-between">
-                    <div>
-                      <div className="font-medium text-zinc-900 dark:text-zinc-100">{cert.name}</div>
-                      <div className="text-sm text-zinc-600 dark:text-zinc-400">{cert.issuer}</div>
+              <div className="space-y-6">
+                {profile.projects.map((project, idx) => (
+                  <div key={project.name} className={idx !== profile.projects.length - 1 ? "pb-6 border-b border-slate-200" : ""}>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                      {project.name}
+                    </h3>
+                    <div className="space-y-2 mb-4">
+                      {project.descriptions.map((desc, i) => (
+                        <p key={i} className="text-slate-700 flex gap-3">
+                          <span className="text-blue-600 font-bold">•</span>
+                          {desc}
+                        </p>
+                      ))}
                     </div>
-                    <div className="text-sm text-zinc-500 dark:text-zinc-400">{cert.date}</div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="inline-block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
-            </section>
-
-            <footer className="mt-10 border-t pt-6 text-sm text-zinc-600 dark:text-zinc-400">
-              <div className="flex justify-end">
-                <div className="text-xs">Last updated — Dec 2025</div>
-              </div>
-            </footer>
+            </div>
           </div>
-        </section>
+
+          {/* Right Sidebar */}
+          <div className="space-y-6">
+            {/* Skills */}
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span className="text-2xl">💡</span>
+                Skills
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {profile.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="bg-slate-100 text-slate-800 text-xs font-semibold px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-700 transition"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Education */}
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span className="text-2xl">🎓</span>
+                Education
+              </h3>
+              <div className="space-y-4">
+                {profile.education.map((edu) => (
+                  <div key={edu.school}>
+                    <div className="font-semibold text-slate-900 text-sm">
+                      {edu.degree}
+                    </div>
+                    <div className="text-blue-600 text-sm font-medium">
+                      {edu.school}
+                    </div>
+                    <div className="text-slate-600 text-xs mt-1">
+                      {edu.date}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span className="text-2xl">🏆</span>
+                Certifications
+              </h3>
+              <div className="space-y-4">
+                {profile.certifications.map((cert) => (
+                  <div key={cert.name} className="border-l-2 border-blue-600 pl-3">
+                    <div className="font-semibold text-slate-900 text-sm">
+                      {cert.name}
+                    </div>
+                    <div className="text-slate-600 text-xs">
+                      {cert.issuer}
+                    </div>
+                    <div className="text-blue-600 text-xs font-medium mt-1">
+                      {cert.date}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-8 text-center text-slate-400 text-sm">
+          <p>Last updated — Dec 2025</p>
+        </div>
       </main>
     </div>
   );
