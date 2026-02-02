@@ -1,4 +1,5 @@
 
+import type { FC } from "react";
 import HeaderSection from "./components/HeaderSection";
 import AboutSection from "./components/AboutSection";
 import SkillsSection from "./components/SkillsSection";
