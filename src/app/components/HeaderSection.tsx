@@ -2,9 +2,6 @@
 export default function HeaderSection() {
   return (
     <header className="header-section">
-      <div className="profile-pic">
-        <img src="/profile-placeholder.png" alt="Profile" />
-      </div>
       <div className="header-content">
         <h1>Your Name</h1>
         <h2>Your Title</h2>
