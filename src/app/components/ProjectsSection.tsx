@@ -1,11 +1,10 @@
-import { FaFolderOpen } from "react-icons/fa";
 
 export default function ProjectsSection() {
   return (
     <section className="projects-section card">
       <h3>Projects</h3>
       <div className="project-item">
-        <FaFolderOpen />
+        <span style={{fontSize: '1.5em'}}>📁</span>
         <div>
           <strong>Project Name</strong>
           <p>

@@ -1,11 +1,10 @@
-import { FaBriefcase } from "react-icons/fa";
 
 export default function ExperienceSection() {
   return (
     <section className="experience-section card">
       <h3>Experience</h3>
       <div className="experience-item">
-        <FaBriefcase />
+        <span style={{fontSize: '1.5em'}}>💼</span>
         <div>
           <strong>Job Title</strong> – Company Name<br />
           <span>Jan 2020 – Present</span>

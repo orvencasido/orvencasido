@@ -1,4 +1,3 @@
-import { FaEnvelope, FaPhone, FaLinkedin } from "react-icons/fa";
 
 export default function HeaderSection() {
   return (
@@ -10,9 +9,9 @@ export default function HeaderSection() {
         <h1>Your Name</h1>
         <h2>Your Title</h2>
         <div className="contact-info">
-          <span><FaEnvelope /> your.email@example.com</span>
-          <span><FaPhone /> (123) 456-7890</span>
-          <span><FaLinkedin /> linkedin.com/in/yourprofile</span>
+          <span>✉️ your.email@example.com</span>
+          <span>📞 (123) 456-7890</span>
+          <span>🔗 linkedin.com/in/yourprofile</span>
         </div>
       </div>
     </header>
