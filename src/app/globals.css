@@ -11,7 +11,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', 'Inter', 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
 .resume-layout {
